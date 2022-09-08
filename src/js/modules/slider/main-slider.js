@@ -1,10 +1,9 @@
-export default class Slider {
-    constructor(page, btns) {
-        this.page = document.querySelector(page);
-        this.slides = this.page.children; //коллекция слайдов
-        this.btns = document.querySelectorAll(btns);
-        this.slideIndex = 1;
+import Slider from './sliders';
 
+
+export default class MainSlider extends Slider { //наследуется от Slider
+    constructor(btns) {
+        super(btns);
     }
 
     showSlides() {
@@ -15,7 +14,8 @@ export default class Slider {
         if (this.slideIndex < 1) {
             this.slideIndex = this.slides.length;
         }
-        //  modal show
+
+        //  modal show на 3 основном слайде
         try {
 
             let divHanson = this.slides[2].querySelector('.hanson');
@@ -59,8 +59,5 @@ export default class Slider {
         });
 
         this.showSlides();
-
-
     }
-
 }
