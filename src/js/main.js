@@ -1,6 +1,9 @@
 import VideoPlayer from './modules/playVideo';
 import MainSlider from './modules/slider/main-slider';
 import MiniSlider from './modules/slider/mini-slider';
+import DifferenceList from './modules/diffrerenceList';
+import Form from './modules/form'
+
 
 window.addEventListener('DOMContentLoaded', () => {
 
@@ -41,6 +44,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const player = new VideoPlayer('.showup .play', '.overlay');
     player.init();
+
+    const differenceListOld = new DifferenceList('.officerold');
+    differenceListOld.init();
+    const differenceListNew = new DifferenceList('.officernew');
+    differenceListNew.init();
+
+    new Form('.form').bindPostDats();
 
 
 

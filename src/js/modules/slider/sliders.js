@@ -10,7 +10,7 @@ export default class Slider { //класс прототип
 
         this.container = document.querySelector(container);
         this.slides = this.container.children; //коллекция слайдов
-        this.btns = document.querySelectorAll(btns);
+        this.btns = document.querySelectorAll(btns);//коллекция кнопок для основного слайда
         this.prev = document.querySelector(prev);
         this.next = document.querySelector(next);
         this.activeClass = activeClass;

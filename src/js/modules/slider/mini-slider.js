@@ -1,6 +1,6 @@
 import Slider from './sliders';
 
-export default class MiniSlider extends Slider {
+export default class MiniSlider extends Slider { //наследуется от Slider
     constructor(container, prev, next, activeClass, animate, autoplay) {
         super(container, prev, next, activeClass, animate, autoplay);
     }
@@ -89,7 +89,9 @@ export default class MiniSlider extends Slider {
               align-items: flex-start;   
         `;
         this.bindTriger();
+
         this.decorizeSlides();
+
         if (this.autoplay) {
             this.nextSlideAuto();
             this.container.addEventListener('mouseleave', () => {
