@@ -2,7 +2,8 @@ import VideoPlayer from './modules/playVideo';
 import MainSlider from './modules/slider/main-slider';
 import MiniSlider from './modules/slider/mini-slider';
 import DifferenceList from './modules/diffrerenceList';
-import Form from './modules/form'
+import Form from './modules/form';
+import ModuleInfoShow from './modules/moduleInfoShow'
 
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -12,6 +13,12 @@ window.addEventListener('DOMContentLoaded', () => {
         container: '.page'
     })
     mainSlider.render();
+
+    const moduleMainSlider = new MainSlider({ //новый экземпляр класса
+        btns: '.next',
+        container: '.moduleapp'
+    })
+    moduleMainSlider.render();
 
     const showUpSlider = new MiniSlider({
         container: '.showup__content-slider',
@@ -42,8 +49,8 @@ window.addEventListener('DOMContentLoaded', () => {
     feedSlider.init();
 
 
-    const player = new VideoPlayer('.showup .play', '.overlay');
-    player.init();
+    new VideoPlayer('.showup .play', '.overlay').init();
+    new VideoPlayer('.module__video .play', '.overlay').init();
 
     const differenceListOld = new DifferenceList('.officerold');
     differenceListOld.init();
@@ -51,6 +58,8 @@ window.addEventListener('DOMContentLoaded', () => {
     differenceListNew.init();
 
     new Form('.form').bindPostDats();
+
+    new ModuleInfoShow('.module__info-show .plus').showtext();
 
 
 

@@ -37,18 +37,6 @@ export default class MiniSlider extends Slider { //наследуется от S
         }
         this.decorizeSlides();
     }
-    // nextSlide() {
-
-    //     if (this.slides[1].tagName == "BUTTON" && this.slides[2].tagName == "BUTTON") {
-    //         this.container.appendChild(this.slides[0]); // Slide
-    //         this.container.appendChild(this.prev); // Btn
-    //         this.container.appendChild(this.next); // Btn
-    //         this.decorizeSlides();
-    //     } else {
-    //         this.container.appendChild(this.slides[0]);
-    //         this.decorizeSlides();
-    //     }
-    // }
 
     nextSlideAuto() {
         let paused = setInterval(() => {
@@ -82,27 +70,32 @@ export default class MiniSlider extends Slider { //наследуется от S
     }
 
     init() {
-        this.container.style.cssText = `
-              display: flex;
-              flex-wrap: wrap;
-              overflow: hidden;
-              align-items: flex-start;   
-        `;
-        this.bindTriger();
+        try {
+            this.container.style.cssText = `
+            display: flex;
+            flex-wrap: wrap;
+            overflow: hidden;
+            align-items: flex-start;   
+      `;
+            this.bindTriger();
 
-        this.decorizeSlides();
+            this.decorizeSlides();
 
-        if (this.autoplay) {
-            this.nextSlideAuto();
-            this.container.addEventListener('mouseleave', () => {
+            if (this.autoplay) {
                 this.nextSlideAuto();
-            });
-            this.next.addEventListener('mouseleave', () => {
-                this.nextSlideAuto();
-            });
-            this.prev.addEventListener('mouseleave', () => {
-                this.nextSlideAuto();
-            });
+                this.container.addEventListener('mouseleave', () => {
+                    this.nextSlideAuto();
+                });
+                this.next.addEventListener('mouseleave', () => {
+                    this.nextSlideAuto();
+                });
+                this.prev.addEventListener('mouseleave', () => {
+                    this.nextSlideAuto();
+                });
+            }
+        } catch (error) {
+
         }
+
     }
 }

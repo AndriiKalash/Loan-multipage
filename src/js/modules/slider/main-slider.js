@@ -43,8 +43,7 @@ export default class MainSlider extends Slider { //наследуется от S
         this.showSlides(this.slideIndex += n);
     }
 
-    render() {
-
+    bindTriggers() {
         this.btns.forEach(btn => {
             btn.addEventListener('click', () => {
                 this.plusSlides(1);
@@ -57,7 +56,28 @@ export default class MainSlider extends Slider { //наследуется от S
                 this.showSlides();
             });
         });
+        //доп кнопки на главном слайдере второй страницы
+        document.querySelectorAll('.prevmodule').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                this.plusSlides(-1)
+            })
+        });
+        document.querySelectorAll('.nextmodule').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();// так как всплытие происходит и на кнопке главной next 
+                e.preventDefault();
+                this.plusSlides(1)
+            })
+        });
+    }
 
-        this.showSlides();
+    render() {
+
+        if (this.container) { //условие что действие происходит именно на данной странице
+            this.bindTriggers();
+            this.showSlides();
+        }
     }
 }

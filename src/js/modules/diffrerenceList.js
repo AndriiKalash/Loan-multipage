@@ -1,12 +1,12 @@
 export default class DifferenceList {
     constructor(parentSelector) {
-
-        this.parent = document.querySelector(parentSelector);
-        this.cards = this.parent.children;
-        this.btn = this.parent.querySelector('.plus');
-        this.cardIndex = 0;
-
-        this.cards[this.cards.length - 1].classList.add('animated', 'fadeInDown');
+        try {
+            this.parent = document.querySelector(parentSelector);
+            this.cards = this.parent.children;
+            this.btn = this.parent.querySelector('.plus');
+            this.cardIndex = 0;
+            this.cards[this.cards.length - 1].classList.add('animated', 'fadeInDown');
+        } catch (error) { }
     }
 
     hideCard() {
@@ -28,8 +28,9 @@ export default class DifferenceList {
     }
 
     init() {
-
-        this.hideCard();
-        this.btn.addEventListener('click', () => this.addCard());
+        try {
+            this.hideCard();
+            this.btn.addEventListener('click', () => this.addCard());
+        } catch (error) { }
     }
 }
