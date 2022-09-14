@@ -4,6 +4,7 @@ import MiniSlider from './modules/slider/mini-slider';
 import DifferenceList from './modules/diffrerenceList';
 import Form from './modules/form';
 import ModuleInfoShow from './modules/moduleInfoShow'
+import Download from './modules/download'
 
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -60,6 +61,9 @@ window.addEventListener('DOMContentLoaded', () => {
     new Form('.form').bindPostDats();
 
     new ModuleInfoShow('.module__info-show .plus').showtext();
+
+    new Download('.download').init();
+
 
 
 
